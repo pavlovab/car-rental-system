@@ -3,6 +3,7 @@ from sqlalchemy import event
 from sqlalchemy.engine import Engine
 
 from config import Config
+from db import db_bp
 from models.models import db
 from routes.car_routes import car_bp
 from routes.customer_routes import customer_bp
@@ -27,6 +28,7 @@ def enable_sqlite_fks(dbapi_connection, connection_record):
 
 
 # Register Blueprints for routes
+app.register_blueprint(db_bp)
 app.register_blueprint(car_bp)
 app.register_blueprint(customer_bp)
 app.register_blueprint(rental_bp)
